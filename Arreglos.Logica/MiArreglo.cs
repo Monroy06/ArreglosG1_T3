@@ -1,19 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Text;
 
 namespace Arreglos.Logica
 {
     public class MiArreglo
     {
-
-
-        //Atributos o campos 
+        //Atributos o campos
         private int _tope;
         private int[] _arreglo;
 
-
-        // constructor
+        //Constructor
         public MiArreglo(int n)
         {
             N = n;
@@ -21,46 +19,106 @@ namespace Arreglos.Logica
             _tope = 0;
         }
 
-        //Propiedades 
+        //Propiedades
         public int N { get; }
         public bool EstaLleno => _tope == N;
         public bool EstaVacio => _tope == 0;
-        //Metodos 
-        //Metodo llenar 
+
+        //Métodos
+        //Metodo llenar
         public void Llenar(int minimo, int maximo)
         {
             Random oRandom = new Random();
-            for (int i = 0; i < _tope - 1; i++)
+
+            for (int i = 0; i < N; i++)
             {
                 _arreglo[i] = oRandom.Next(minimo, maximo);
 
             }
-            _tope=N;
+            _tope = N;
+        }
+
+        //Método burbuja
+
+        public void Ordenar()
+        {
+            Ordenar(true);
         }
 
 
-        // Metodos ToString
+
+
+
+        public void Ordenar(bool ascendente)
+        {
+            for (int i = 0; i < _tope - 1; i++)
+            {
+                for (int j = i + 1; j < _tope; j++)
+                {
+                    if (ascendente)
+                    {
+
+                        if (_arreglo[i] > _arreglo[j])
+                        {
+                            Cambiar(ref _arreglo[i], ref _arreglo[j]);
+                        }
+                    }
+                    else
+                    {
+                        if (_arreglo[i] < _arreglo[j])
+                        {
+                            Cambiar(ref _arreglo[i], ref _arreglo[j]);
+                        }
+
+                    }
+                }
+
+
+            }
+        }
+
+
+        //Método cambiar
+
+        public void Cambiar(ref int a, ref int b)
+        {
+            int aux = a;
+            a = b;
+            b = aux;
+        }
+
+
+
+        //Método ToString
+
         public override string ToString()
         {
+
             if (EstaVacio)
             {
-                return "Arreglo vacio";
+                return "Esta vacio";
             }
+
             String cadena = string.Empty;
             int contador = 0;
+
             for (int i = 0; i < _tope; i++)
             {
-                cadena += $"[{i}]={_arreglo[i]}\n";
+                //cadena = cadena + _arreglo[i]
+                cadena += $"{_arreglo[i]}\t";
                 contador++;
-                if (contador < 9)
+
+                if (contador > 9)
                 {
                     contador = 0;
                     cadena += "\n";
                 }
-                
+
+
             }
             return cadena;
-
         }
+
+
     }
 }
