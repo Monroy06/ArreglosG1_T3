@@ -29,11 +29,23 @@ try
     Console.WriteLine(verPares);
     Console.ReadKey();
 
+    Console.WriteLine("\nPrimos\n");
+    var verPrimos = oMiArreglo.ObtenerPrimos();
+    Console.WriteLine(verPrimos );
+    Console.ReadKey();
+
+    Console.WriteLine("\nPrimos ordenados\n");
+    verPrimos.Ordenar();
+    Console.WriteLine(verPrimos);
+    Console.ReadKey();
+
+
+
 }
-catch (Exception)
+catch (Exception ex)
 {
 
-    throw;
+    Console.WriteLine(ex.Message);
 }
 
 //try
