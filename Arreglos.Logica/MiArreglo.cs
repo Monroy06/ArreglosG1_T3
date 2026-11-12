@@ -157,13 +157,28 @@ namespace Arreglos.Logica
 
         }
 
+        //metodo par
+
+        private bool EsPar(int n)
+        {
+
+            if (n % 2 == 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+
+        //Metodo Obtener Pares 
         public MiArreglo ObtenerPares()
         {
 
             int contadorPares = 0;
             for (int i = 0; i < _tope; i++)
             {
-                if (_arreglo[i] % 2 == 0)
+                if (EsPar(_arreglo[i]))
                 {
                     contadorPares++;
                 }
@@ -182,7 +197,7 @@ namespace Arreglos.Logica
             return arregloPares;
         }
 
-       //metodo Obtener primos 
+        //Mpetodo ObtenerPrimos
 
         public MiArreglo ObtenerPrimos()
         {
@@ -194,10 +209,11 @@ namespace Arreglos.Logica
                 {
                     contadorPrimos++;
                 }
-               
 
             }
+
             var arregloPrimos = new MiArreglo(contadorPrimos);
+
             for (int i = 0; i < _tope; i++)
             {
                 if (_arreglo[i] == 1) { continue; }
@@ -210,28 +226,20 @@ namespace Arreglos.Logica
             return arregloPrimos;
         }
 
-
-        //metodo EsPrimo
+        //método es primo
         private bool EsPrimo(int n)
         {
             for (int i = 2; i < n; i++)
             {
-             if(n % i == 0)
-              {
-                    return false;
 
+                if (n % i == 0)
+                {
+                    return false;
                 }
-             
             }
             return true;
-          
-         }
 
-
-
-
-
-
+        }
 
         //Método ToString
 
